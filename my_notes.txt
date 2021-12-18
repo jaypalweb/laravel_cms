@@ -1,3 +1,7 @@
 install laravel
 composer create-project laravel/laravel .
-php artisan serve
+php artisan serve - to run the server
+
+
+check two url - http://localhost:8000/blog/show
+http://localhost:8000/
