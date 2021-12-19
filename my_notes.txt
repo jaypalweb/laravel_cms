@@ -2,6 +2,19 @@ install laravel
 composer create-project laravel/laravel .
 php artisan serve - to run the server
 
-
-check two url - http://localhost:8000/blog/show
+check two url
+http://localhost:8000/blog/show
 http://localhost:8000/
+
+make model and migration file in single command
+php artisan make:model Post -m
+
+to run migration
+php artisan migrate
+
+create seeder
+php artisan make:seed PostsTableSeeder
+php artisan make:seed UsersTableSeeder
+
+seed the data
+php artisan db:seed
