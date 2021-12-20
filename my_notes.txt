@@ -18,3 +18,6 @@ php artisan make:seed UsersTableSeeder
 
 seed the data
 php artisan db:seed
+
+add a single migration alter to table posts
+php artisan make:migration alter_posts_add_published_at_column --table=posts
