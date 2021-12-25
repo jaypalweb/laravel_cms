@@ -34,3 +34,6 @@ php artisan migrate:refresh
 
 create categories seeder
 php artisan make:seeder CategoriesTableSeeder
+
+make a model
+php artisan make:model Category
