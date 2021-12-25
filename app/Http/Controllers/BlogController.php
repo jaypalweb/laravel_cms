@@ -28,13 +28,16 @@ class BlogController extends Controller
         $categories = Category::with(['posts' => function($query){
             $query->published();
         }])->orderBy('title', 'asc')->get();
-
-        $posts = Post::with('author')
+        // DB::enableQueryLog();
+        $posts = Category::find($id)
+                    ->posts()
+                    ->with('author')
                     ->latestFirst()
                     ->published()
-                    ->where('category_id', $id)
                     ->paginate($this->limit);
+
         return view("blog.index", compact('posts', 'categories'));
+        // dd(DB::getQueryLog());
     }
 
     public function show(Post $post)
