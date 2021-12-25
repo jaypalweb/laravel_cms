@@ -37,3 +37,6 @@ php artisan make:seeder CategoriesTableSeeder
 
 make a model
 php artisan make:model Category
+
+service provider
+php artisan make:provider ComposerServiceProvider
