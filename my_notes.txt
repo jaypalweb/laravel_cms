@@ -40,3 +40,6 @@ php artisan make:model Category
 
 service provider
 php artisan make:provider ComposerServiceProvider
+
+add author slug column
+php artisan make:migration alter_users_add_slug_column --table=users
