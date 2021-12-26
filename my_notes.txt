@@ -43,3 +43,6 @@ php artisan make:provider ComposerServiceProvider
 
 add author slug column
 php artisan make:migration alter_users_add_slug_column --table=users
+
+add bio
+php artisan make:migration alter_user_add_bio_column --table=users
