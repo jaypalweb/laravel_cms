@@ -11,8 +11,6 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['view_count'];
-
     protected $dates = ['published_at'];
 
     public function author()
