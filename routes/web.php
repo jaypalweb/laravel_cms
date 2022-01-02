@@ -20,3 +20,6 @@ Route::get('/blog/{post}',  [BlogController::class, 'show'])->name('blog.show');
 Route::get('/category/{category}',  [BlogController::class, 'category'])->name('category');
 
 Route::get('/author/{author}',  [BlogController::class, 'author'])->name('author');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
