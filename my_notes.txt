@@ -65,3 +65,10 @@ npm run dev
 
 AdminLTE
 npm install admin-lte@^3.1 --save
+
+install fontawesome
+npm install --save @fortawesome/fontawesome-free
+
+https://fontawesome.com/start
+https://fontawesome.com/v5.15/how-to-use/on-the-web/setup/using-package-managers
+https://fontawesome.com/v5.15/how-to-use/on-the-web/using-with/sass
