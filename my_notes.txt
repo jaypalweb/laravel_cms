@@ -52,6 +52,8 @@ php artisan make:migration alter_add_view_count_column --table=posts
 
 backend php
 Integrate Laravel 8 with AdminLTE 3 and Font Awesome 5 
+https://github.com/ColorlibHQ/AdminLTE
+
 https://www.youtube.com/watch?v=Krc-4MIHFlk
 
 
