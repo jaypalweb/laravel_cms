@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.backend.main')
 
 @section('content')
   <!-- /.login-logo -->
@@ -7,12 +7,12 @@
       <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">{{ __('Login') }}</p>
 
       <form method="POST" action="{{ route('login') }}">
             @csrf
         <div class="input-group mb-3">
-          <input type="email"  class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email" autofocus>
+          <input type="email"  class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="{{ __('Email') }}" autofocus>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -25,7 +25,7 @@
             @enderror
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
+          <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="{{ __('Password') }}">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
