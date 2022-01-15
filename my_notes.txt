@@ -74,3 +74,6 @@ https://fontawesome.com/v5.15/how-to-use/on-the-web/setup/using-package-managers
 https://fontawesome.com/v5.15/how-to-use/on-the-web/using-with/sass
 
 php artisan make:controller Backend/Controller
+
+make a controlller
+php artisan make:controller Backend\BlogController --resource
