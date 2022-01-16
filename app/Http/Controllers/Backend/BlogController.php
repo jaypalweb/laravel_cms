@@ -16,7 +16,7 @@ class BlogController extends BackendController
      */
     public function index()
     {
-        $posts = Post::latest()->paginate($this->limit);
+        $posts = Post::with('category', 'author')->latest()->paginate($this->limit);
         return view('backend.blog.index', compact('posts'));
     }
 
