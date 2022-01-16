@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class BlogController extends BackendController
 {
+    protected $limit = 5;
+
     /**
      * Display a listing of the resource.
      *
@@ -13,8 +16,8 @@ class BlogController extends BackendController
      */
     public function index()
     {
-        die('--blog index--');
-        //
+        $posts = Post::latest()->paginate($this->limit);
+        return view('backend.blog.index', compact('posts'));
     }
 
     /**
