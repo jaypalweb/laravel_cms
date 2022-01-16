@@ -14,8 +14,9 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Blogs</li>
+              <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('backend.blog.index') }}">Blog</a></li>
+              <li class="breadcrumb-item active">All Posts</li>
             </ol>
           </div>
         </div>
@@ -69,12 +70,12 @@
                 </table>
               </div>
               <div class="card-footer clearfix">
-                    <div class="pull-left">
+                    <div class="float-right">
                         {{ $posts->links() }}
                     </div>
-                    <div class="pull-right">
+                    <div class="float-left">
                         <?php $postCount = $posts->count() ?>
-                        <small>{{ $postCount }} {{ Str::plural('Item', $postCount) }}</small>
+                        <small>Total: {{ $postCount }} {{ Str::plural('Item', $postCount) }}</small>
                     </div>
                 </div>
               <!-- /.card-body -->
