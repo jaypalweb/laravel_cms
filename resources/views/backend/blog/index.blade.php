@@ -34,7 +34,17 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
+                <div class="row mb-3">
+                  <div class="col-sm">
+                    <a href="{{ route('backend.blog.create') }}" class="btn btn-success">Add New</a>
+                  </div>
+                </div>
+                @if(! $posts->count())
+                <div class="alert alert-danger">
+                  <strong>No Record Found</strong>
+                </div>
+                @else
+                <table class="table table-bordered table-hover">
                   <thead>
                   <tr>
                     <th>Action</th>
@@ -68,6 +78,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                @endif
               </div>
               <div class="card-footer clearfix">
                     <div class="float-right">
