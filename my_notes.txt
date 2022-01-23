@@ -77,3 +77,9 @@ php artisan make:controller Backend/Controller
 
 make a controlller
 php artisan make:controller Backend/BlogController --resource
+
+install new package
+composer require laravelcollective/html
+
+Request controller
+php artisan make:request PostRequest
