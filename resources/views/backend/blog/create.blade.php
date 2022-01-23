@@ -42,7 +42,8 @@
 
                 {!! Form::model($post, [
                         'method' => 'POST',
-                        'route' => 'backend.blog.store'
+                        'route' => 'backend.blog.store',
+                        'files' => TRUE
                     ]) !!}
 
                     <div class="form-group">
@@ -87,6 +88,15 @@
 
                         @if($errors->has('category_id'))
                             <span class="invalid-feedback">{{ $errors->first('category_id') }}</span>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        {!! Form::label('image', 'Featured Image') !!}
+                        {!! Form::file('image', ['class' => 'form-control-file']) !!}
+
+                        @if($errors->has('image'))
+                            <span class="invalid-feedback">{{ $errors->first('image') }}</span>
                         @endif
                     </div>
 
