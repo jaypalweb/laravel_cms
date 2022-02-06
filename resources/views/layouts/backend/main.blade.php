@@ -9,6 +9,7 @@
   <title>@yield('title', 'MyBlog')</title>
 
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 </head>
 <body @guest class="hold-transition login-page" @else class="hold-transition sidebar-mini" @endguest>
 <div @guest class="login-box" @else class="wrapper" @endguest>
@@ -58,5 +59,7 @@
 <!-- REQUIRED SCRIPTS -->
 
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+@yield('script')
 </body>
 </html>

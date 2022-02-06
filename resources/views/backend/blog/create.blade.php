@@ -62,7 +62,7 @@
                             <span class="invalid-feedback">{{ $errors->first('slug') }}</span>
                         @endif
                     </div>
-                    <div class="form-group">
+                    <div class="form-group excerpt">
                         {!! Form::label('excerpt') !!}
                         {!! Form::textarea('excerpt', null, ['class' => 'form-control '.($errors->has('title') ? 'is-invalid':'')]) !!}
                     </div>
@@ -121,4 +121,24 @@
     </section>
     <!-- /.content -->
 
+@endsection
+
+@section('script')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+<script type="text/javascript">
+  $('#title').on('blur', function() {
+      var theTitle = this.value.toLowerCase().trim(),
+          slugInput = $('#slug'),
+          theSlug = theTitle.replace(/&/g, '-and-')
+                            .replace(/[^a-z0-9-]+/g, '-')
+                            .replace(/\-\-+/g, '-')
+                            .replace(/^-+|-+$/g, '');
+
+      slugInput.val(theSlug);
+  });
+  var simplemde1 = new SimpleMDE({ element: $("#excerpt")[0] });
+  var simplemde2 = new SimpleMDE({ element: $("#body")[0] });
+  $('#published_at').datetimepicker({ footer: true, modal: true, format: "yyyy-mm-dd HH:mm:ss" });
+</script>
 @endsection

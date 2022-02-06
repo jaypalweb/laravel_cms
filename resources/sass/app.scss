@@ -16,3 +16,8 @@ $fa-font-path: "../webfonts";
 @import "~@fortawesome/fontawesome-free/scss/brands.scss";
 
 @import '~admin-lte/dist/css/adminlte.css';
+
+.form-group.excerpt .CodeMirror{
+    height: 130px;
+    min-height: 130px;
+}

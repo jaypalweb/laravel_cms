@@ -86,3 +86,5 @@ php artisan make:request PostRequest
 
 for thumbnail generation
 composer require intervention/image
+
+npm install jquery
