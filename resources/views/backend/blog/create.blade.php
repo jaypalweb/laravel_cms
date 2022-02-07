@@ -27,7 +27,7 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-12">
+          <div class="col-8">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Add Blog</h3>
@@ -93,7 +93,17 @@
 
                     <div class="form-group">
                         {!! Form::label('image', 'Featured Image') !!}
-                        {!! Form::file('image', ['class' => 'form-control-file']) !!}
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                          <div class="fileinput-new img-thumbnail" style="width: 200px; height: 150px;">
+                            <img src="{{ URL::to('/') }}/img/no_image.png"  alt="...">
+                          </div>
+                          <div class="fileinput-preview fileinput-exists img-thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                          <div>
+                            <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>{!! Form::file('image', ['class' => 'form-control-file']) !!}</span>
+                            <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
+                          </div>
+                        </div>
+                        
 
                         @if($errors->has('image'))
                             <span class="invalid-feedback">{{ $errors->first('image') }}</span>
@@ -112,6 +122,9 @@
             </div>
             <!-- /.card -->
             
+          </div>
+          <div class="col-4">
+            widgets
           </div>
           <!-- /.col -->
         </div>
