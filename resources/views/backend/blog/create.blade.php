@@ -25,9 +25,16 @@
 
     <!-- Main content -->
     <section class="content">
+    {!! Form::model($post, [
+                        'method' => 'POST',
+                        'route' => 'backend.blog.store',
+                        'files' => TRUE
+                    ]) !!}
       <div class="container-fluid">
         <div class="row">
-          <div class="col-8">
+        
+
+          <div class="col-9">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Add Blog</h3>
@@ -39,12 +46,6 @@
                     <a href="{{ route('backend.blog.index') }}" class="btn btn-success">Back</a>
                   </div>
                 </div>
-
-                {!! Form::model($post, [
-                        'method' => 'POST',
-                        'route' => 'backend.blog.store',
-                        'files' => TRUE
-                    ]) !!}
 
                     <div class="form-group">
                         {!! Form::label('title') !!}
@@ -75,14 +76,6 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        {!! Form::label('published_at', 'Publish Date') !!}
-                        {!! Form::text('published_at', null, ['class' => 'form-control '.($errors->has('title') ? 'is-invalid':''), 'placeholder' => 'Y-m-d H:i:s']) !!}
-
-                        @if($errors->has('published_at'))
-                            <span class="invalid-feedback">{{ $errors->first('published_at') }}</span>
-                        @endif
-                    </div>
-                    <div class="form-group">
                         {!! Form::label('category_id', 'Category') !!}
                         {!! Form::select('category_id', App\Models\Category::pluck('title', 'id'), null, ['class' => 'form-control '.($errors->has('title') ? 'is-invalid':''), 'placeholder' => 'Choose category']) !!}
 
@@ -90,31 +83,6 @@
                             <span class="invalid-feedback">{{ $errors->first('category_id') }}</span>
                         @endif
                     </div>
-
-                    <div class="form-group">
-                        {!! Form::label('image', 'Featured Image') !!}
-                        <div class="fileinput fileinput-new" data-provides="fileinput">
-                          <div class="fileinput-new img-thumbnail" style="width: 200px; height: 150px;">
-                            <img src="{{ URL::to('/') }}/img/no_image.png"  alt="...">
-                          </div>
-                          <div class="fileinput-preview fileinput-exists img-thumbnail" style="max-width: 200px; max-height: 150px;"></div>
-                          <div>
-                            <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>{!! Form::file('image', ['class' => 'form-control-file']) !!}</span>
-                            <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
-                          </div>
-                        </div>
-                        
-
-                        @if($errors->has('image'))
-                            <span class="invalid-feedback">{{ $errors->first('image') }}</span>
-                        @endif
-                    </div>
-
-                    <hr>
-
-                    {!! Form::submit('Create new post', ['class' => 'btn btn-primary']) !!}
-
-                    {!! Form::close() !!}
                 
               </div>
               
@@ -123,37 +91,57 @@
             <!-- /.card -->
             
           </div>
-          <div class="col-4">
-          <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Publish</h3>
-              </div>
-            <div class="card-body">
-              <div class="form-group {{ $errors->has('published_at') ? 'has-error' : '' }}">
+          <div class="col-3">
+            <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Publish</h3>
+                </div>
+              <div class="card-body">
+                <div class="form-group">
                   {!! Form::label('published_at', 'Publish Date') !!}
-                  <div class='input-group date' id='datetimepicker1'>
-                      {!! Form::text('published_at', null, ['class' => 'form-control', 'placeholder' => 'Y-m-d H:i:s']) !!}
-                      <span class="input-group-addon">
-                          <span class="glyphicon glyphicon-calendar"></span>
-                      </span>
-                  </div>
-
+                  {!! Form::text('published_at', null, ['class' => 'form-control '.($errors->has('title') ? 'is-invalid':''), 'placeholder' => 'Y-m-d H:i:s']) !!}
 
                   @if($errors->has('published_at'))
-                      <span class="help-block">{{ $errors->first('published_at') }}</span>
+                      <span class="invalid-feedback">{{ $errors->first('published_at') }}</span>
                   @endif
+                </div>
+                <a href="#" id="draft-btn" class="btn btn-default">Save Draft</a>
+                {!! Form::submit('Publish', ['class' => 'btn btn-primary']) !!}
               </div>
-              
-              <a href="#" id="draft-btn" class="btn btn-default">Save Draft</a>
-              {!! Form::submit('Publish', ['class' => 'btn btn-primary']) !!}
             </div>
-          </div>
 
+            <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Featured Image</h3>
+                </div>
+              <div class="card-body">
+                <div class="form-group">
+                    {!! Form::label('image', 'Featured Image') !!}
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                      <div class="fileinput-new img-thumbnail" style="width: 200px; height: 150px;">
+                        <img src="{{ URL::to('/') }}/img/no_image.png"  alt="...">
+                      </div>
+                      <div class="fileinput-preview fileinput-exists img-thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                      <div>
+                        <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>{!! Form::file('image', ['class' => 'form-control-file']) !!}</span>
+                        <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
+                      </div>
+                    </div>
+                    
+
+                    @if($errors->has('image'))
+                        <span class="invalid-feedback">{{ $errors->first('image') }}</span>
+                    @endif
+                </div>
+              </div>
+            </div>
           </div>
           <!-- /.col -->
         </div>
         <!-- /.row -->
       </div>
+
+    {!! Form::close() !!}
       <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
