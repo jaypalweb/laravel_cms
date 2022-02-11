@@ -124,7 +124,31 @@
             
           </div>
           <div class="col-4">
-            widgets
+          <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Publish</h3>
+              </div>
+            <div class="card-body">
+              <div class="form-group {{ $errors->has('published_at') ? 'has-error' : '' }}">
+                  {!! Form::label('published_at', 'Publish Date') !!}
+                  <div class='input-group date' id='datetimepicker1'>
+                      {!! Form::text('published_at', null, ['class' => 'form-control', 'placeholder' => 'Y-m-d H:i:s']) !!}
+                      <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-calendar"></span>
+                      </span>
+                  </div>
+
+
+                  @if($errors->has('published_at'))
+                      <span class="help-block">{{ $errors->first('published_at') }}</span>
+                  @endif
+              </div>
+              
+              <a href="#" id="draft-btn" class="btn btn-default">Save Draft</a>
+              {!! Form::submit('Publish', ['class' => 'btn btn-primary']) !!}
+            </div>
+          </div>
+
           </div>
           <!-- /.col -->
         </div>
