@@ -26,10 +26,11 @@
     <!-- Main content -->
     <section class="content">
     {!! Form::model($post, [
-                        'method' => 'POST',
-                        'route' => 'backend.blog.store',
-                        'files' => TRUE
-                    ]) !!}
+        'method' => 'POST',
+        'route' => 'backend.blog.store',
+        'files' => TRUE,
+        'id' => 'post-form'
+    ]) !!}
       <div class="container-fluid">
         <div class="row">
         
@@ -91,7 +92,7 @@
               <div class="card-body">
                 <div class="form-group">
                   {!! Form::label('published_at', 'Publish Date') !!}
-                  {!! Form::text('published_at', null, ['class' => 'form-control '.($errors->has('title') ? 'is-invalid':''), 'placeholder' => 'Y-m-d H:i:s']) !!}
+                  {!! Form::text('published_at', null, ['class' => 'form-control '.($errors->has('published_at') ? 'is-invalid':''), 'placeholder' => 'Y-m-d H:i:s']) !!}
 
                   @if($errors->has('published_at'))
                       <span class="invalid-feedback">{{ $errors->first('published_at') }}</span>
@@ -173,5 +174,11 @@
   var simplemde1 = new SimpleMDE({ element: $("#excerpt")[0] });
   var simplemde2 = new SimpleMDE({ element: $("#body")[0] });
   $('#published_at').datetimepicker({ footer: true, modal: true, format: "yyyy-mm-dd HH:mm:ss" });
+
+  $('#draft-btn').click(function(e) {
+      e.preventDefault();
+      $('#published_at').val("");
+      $('#post-form').submit();
+  });
 </script>
 @endsection
