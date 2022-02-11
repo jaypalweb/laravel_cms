@@ -75,14 +75,6 @@
                             <span class="invalid-feedback">{{ $errors->first('body') }}</span>
                         @endif
                     </div>
-                    <div class="form-group">
-                        {!! Form::label('category_id', 'Category') !!}
-                        {!! Form::select('category_id', App\Models\Category::pluck('title', 'id'), null, ['class' => 'form-control '.($errors->has('title') ? 'is-invalid':''), 'placeholder' => 'Choose category']) !!}
-
-                        @if($errors->has('category_id'))
-                            <span class="invalid-feedback">{{ $errors->first('category_id') }}</span>
-                        @endif
-                    </div>
                 
               </div>
               
@@ -107,6 +99,22 @@
                 </div>
                 <a href="#" id="draft-btn" class="btn btn-default">Save Draft</a>
                 {!! Form::submit('Publish', ['class' => 'btn btn-primary']) !!}
+              </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Category</h3>
+                </div>
+              <div class="card-body">
+                <div class="form-group">
+                    {!! Form::label('category_id', 'Category') !!}
+                    {!! Form::select('category_id', App\Models\Category::pluck('title', 'id'), null, ['class' => 'form-control '.($errors->has('title') ? 'is-invalid':''), 'placeholder' => 'Choose category']) !!}
+
+                    @if($errors->has('category_id'))
+                        <span class="invalid-feedback">{{ $errors->first('category_id') }}</span>
+                    @endif
+                </div>
               </div>
             </div>
 
